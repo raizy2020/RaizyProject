@@ -7,7 +7,7 @@ import {
   updateReceipt,
   deleteReceipt,
   downloadReceiptPdf 
-} from '../controllers/Receipt';
+} from '../controllers/receipt';
 
 const router = express.Router();
 

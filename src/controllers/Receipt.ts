@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import PDFDocument from 'pdfkit';
-import { Receipt } from '../models/Receipt'; 
+import { Receipt } from '../models/receipt'; 
 
- const getAllReceipts = async (req: Request, res: Response): Promise<void> => {
+  export const getAllReceipts = async (req: Request, res: Response): Promise<void> => {
   try {
     const receipts = await Receipt.find();
     res.json(receipts);

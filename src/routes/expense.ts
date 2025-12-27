@@ -6,7 +6,7 @@ import {
   createExpense,
   updateExpense,
   deleteExpense
-} from '../controllers/Expense';
+} from '../controllers/expense';
 
 const router = express.Router();
 

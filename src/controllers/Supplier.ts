@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Supplier } from '../models/Supplier';
+import { Supplier } from '../models/supplier';
 
 export const getAllSuppliers = async (req: Request, res: Response) => {
   try {

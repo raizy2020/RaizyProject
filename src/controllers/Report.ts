@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { Income } from '../models/Income';
-import { Expense } from '../models/Expense';
+import { Income } from '../models/income';
+import { Expense } from '../models/expense';
 
 export const incomeVsExpense = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -8,20 +8,38 @@ export const incomeVsExpense = async (req: Request, res: Response, next: NextFun
     const fromDate = from ? new Date(from as string) : new Date('1970-01-01');
     const toDate = to ? new Date(to as string) : new Date();
 
-    const incomes = await Income.aggregate([
-      { $match: { date: { $gte: fromDate, $lte: toDate } } },
-      { $group: { _id: null, total: { $sum: '$amount' } } }
-    ]);
-
-    const expenses = await Expense.aggregate([
-      { $match: { date: { $gte: fromDate, $lte: toDate } } },
-      { $group: { _id: null, total: { $sum: '$amount' } } }
-    ]);
+    const incomes = await Income.find({ date: { $gte: fromDate, $lte: toDate } });
+    const expenses = await Expense.find({ date: { $gte: fromDate, $lte: toDate } });
 
     res.json({
-      totalIncome: incomes[0]?.total || 0,
-      totalExpense: expenses[0]?.total || 0
+      incomes,
+      expenses
     });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Add missing endpoints for test compatibility
+export const incomeByDate = async (req: Request, res: Response) => {
+  try {
+    const { from, to } = req.query;
+    const fromDate = from ? new Date(from as string) : new Date('1970-01-01');
+    const toDate = to ? new Date(to as string) : new Date();
+    const incomes = await Income.find({ date: { $gte: fromDate, $lte: toDate } });
+    res.status(200).json(incomes);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+export const expenseByDate = async (req: Request, res: Response) => {
+  try {
+    const { from, to } = req.query;
+    const fromDate = from ? new Date(from as string) : new Date('1970-01-01');
+    const toDate = to ? new Date(to as string) : new Date();
+    const expenses = await Expense.find({ date: { $gte: fromDate, $lte: toDate } });
+    res.status(200).json(expenses);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }

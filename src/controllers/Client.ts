@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Client } from '../models/Client';
+import { Client } from '../models/client';
 
 export const getAllClients = async (req: Request, res: Response) => {
   try {
