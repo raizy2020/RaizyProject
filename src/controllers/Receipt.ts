@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import PDFDocument from 'pdfkit';
-import { Receipt } from '../models/Receipt'; // ודא שיש לך מודל כזה
+import { Receipt } from '../models/Receipt'; 
 
-// CRUD Operations
-export const getAllReceipts = async (req: Request, res: Response): Promise<void> => {
+ const getAllReceipts = async (req: Request, res: Response): Promise<void> => {
   try {
     const receipts = await Receipt.find();
     res.json(receipts);
@@ -77,7 +76,6 @@ export const downloadReceiptPdf = async (req: Request, res: Response, next: Next
     doc.text(`תאריך: ${receipt.date}`);
     doc.text(`סכום: ${receipt.amount}`);
     doc.text(`לקוח: ${receipt.clientName}`);
-    // הוסף עוד שדות לפי הצורך
 
     doc.end();
   } catch (err: any) {

@@ -1,14 +1,4 @@
-// import express from 'express';
-// import { getAllSuppliers, getSupplierById, createSupplier, updateSupplier } from '../controllers/Supplier';
 
-// const router = express.Router();
-
-// router.get('/', getAllSuppliers);
-// router.get('/:id', getSupplierById);
-// router.post('/', createSupplier);
-// router.put('/:id', updateSupplier);
-
-// export default router;
 import express from 'express';
 import {
   getAllSuppliers,

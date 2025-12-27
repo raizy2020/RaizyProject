@@ -9,7 +9,6 @@ export const getAllSuppliers = async (req: Request, res: Response) => {
     res.status(500).json({ error: err.message });
   }
 };
-// :Promise<void>
 export const getSupplierById = async (req: Request, res: Response) => {
   try {
     const supplier = await Supplier.findById(req.params.id);

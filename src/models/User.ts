@@ -5,7 +5,7 @@ export interface IUser extends Document {
   password: string;
   businessType: "זעיר" | "פטור" | "מורשה";
   email?: string;
-  // אפשר להוסיף שדות נוספים לפי הצורך
+  
 } 
 
 const UserSchema: Schema = new Schema({

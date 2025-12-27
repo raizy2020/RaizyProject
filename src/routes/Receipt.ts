@@ -1,14 +1,4 @@
-// import express from 'express';
-// import { getAllReceipts, getReceiptById, createReceipt, updateReceipt } from '../controllers/Receipt';
 
-// const router = express.Router();
-
-// router.get('/', getAllReceipts);
-// router.get('/:id', getReceiptById);
-// router.post('/', createReceipt);
-// router.put('/:id', updateReceipt);
-
-// export default router;
 import express, { Request, Response, NextFunction } from 'express';
 import { 
   getAllReceipts,

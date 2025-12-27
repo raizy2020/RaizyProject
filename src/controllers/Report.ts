@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import { Income } from '../models/Income';
 import { Expense } from '../models/Expense';
 
-// הכנסות מול הוצאות לפי טווח תאריכים
 export const incomeVsExpense = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { from, to } = req.query;
@@ -28,7 +27,6 @@ export const incomeVsExpense = async (req: Request, res: Response, next: NextFun
   }
 };
 
-// ניתוח הכנסות לפי לקוח, תאריך, סוג תשלום
 export const incomeAnalysis = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { from, to, client, paymentType } = req.query;
@@ -58,7 +56,6 @@ export const incomeAnalysis = async (req: Request, res: Response, next: NextFunc
   }
 };
 
-// הוצאות לפי קטגוריה, תאריך, סוג תשלום
 export const expenseAnalysis = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { from, to, category, paymentType } = req.query;
