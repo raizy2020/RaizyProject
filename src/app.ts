@@ -10,9 +10,9 @@ mongoose.connect('mongodb://localhost:27017/accounting')
 
 
 
-import incomeRoutes from './routes/income';
-import expenseRoutes from './routes/expense';
-import reportRoutes from './routes/report';
+import incomeRoutes from './Routes/income';
+import expenseRoutes from './Routes/Expense';
+import reportRoutes from './Routes/Report';
 
 app.get('/', (req: express.Request, res: express.Response) => {
   res.send('Accounting App API');

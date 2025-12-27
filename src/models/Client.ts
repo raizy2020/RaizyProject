@@ -1,15 +1,36 @@
-import mongoose, { Schema, Document } from 'mongoose';
+// import mongoose, { Schema, Document } from 'mongoose';
 
+// export interface IClient extends Document {
+//   name: string;
+//   email?: string;
+//   phone?: string;
+// }
+
+// const ClientSchema: Schema = new Schema({
+//   name: { type: String, required: true },
+//   email: { type: String },
+//   phone: { type: String }
+// });
+
+// export default mongoose.model<IClient>('Client', ClientSchema);
+import mongoose, { Schema, Document } from "mongoose";
+// ---------- מודל לקוח ----------
 export interface IClient extends Document {
   name: string;
-  email?: string;
   phone?: string;
+  email?: string;
+  address?: string;
+  companyId?: string; // ח.פ./ת.ז.
+  type?: "business" | "private";
 }
 
 const ClientSchema: Schema = new Schema({
   name: { type: String, required: true },
+  phone: { type: String },
   email: { type: String },
-  phone: { type: String }
+  address: { type: String },
+  companyId: { type: String },
+  type: { type: String, enum: ["business", "private"] },
 });
 
-export default mongoose.model<IClient>('Client', ClientSchema);
+export const Client = mongoose.model<IClient>("Client", ClientSchema);

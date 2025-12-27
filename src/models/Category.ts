@@ -1,11 +1,26 @@
-import mongoose, { Schema, Document } from 'mongoose';
+// import mongoose, { Schema, Document } from 'mongoose';
 
+// export interface ICategory extends Document {
+//   name: string;
+// }
+
+// const CategorySchema: Schema = new Schema({
+//   name: { type: String, required: true }
+// });
+
+// export default mongoose.model<ICategory>('Category', CategorySchema);
+
+import mongoose, { Schema, Document } from "mongoose";
+ //---------- מודל קטגוריה ----------
 export interface ICategory extends Document {
   name: string;
+  description?: string;
 }
 
 const CategorySchema: Schema = new Schema({
-  name: { type: String, required: true }
+  // שם הקטגוריה חייב להיות ייחודי
+  name: { type: String, required: true, unique: true },
+  description: String,
 });
 
-export default mongoose.model<ICategory>('Category', CategorySchema);
+export const Category = mongoose.model<ICategory>("Category", CategorySchema);

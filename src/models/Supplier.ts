@@ -1,15 +1,35 @@
-import mongoose, { Schema, Document } from 'mongoose';
+// import mongoose, { Schema, Document } from 'mongoose';
 
+// export interface ISupplier extends Document {
+//   name: string;
+//   email?: string;
+//   phone?: string;
+// }
+
+// const SupplierSchema: Schema = new Schema({
+//   name: { type: String, required: true },
+//   email: { type: String },
+//   phone: { type: String }
+// });
+
+// export default mongoose.model<ISupplier>('Supplier', SupplierSchema);
+import mongoose, { Schema, Document } from "mongoose";
+
+// ---------- מודל ספק ----------
 export interface ISupplier extends Document {
   name: string;
-  email?: string;
   phone?: string;
+  email?: string;
+  address?: string;
+  companyId?: string;
 }
 
 const SupplierSchema: Schema = new Schema({
   name: { type: String, required: true },
-  email: { type: String },
-  phone: { type: String }
+  phone: String,
+  email: String,
+  address: String,
+  companyId: String,
 });
 
-export default mongoose.model<ISupplier>('Supplier', SupplierSchema);
+export const Supplier = mongoose.model<ISupplier>("Supplier", SupplierSchema);
