@@ -21,7 +21,7 @@ describe('Category API', () => {
       .send({ name: 'FindMe' });
     const id = createRes.body._id;
     const res = await request(app).get(`/category/${id}`);
-    expect([200, 404, 400,500]).toContain(res.statusCode);
+    expect([200, 404, 400]).toContain(res.statusCode);
   });
 
   it('should update category', async () => {

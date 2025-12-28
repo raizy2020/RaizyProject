@@ -1,7 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 
 const app = express();
+app.use(cors({
+  origin: [/^http:\/\/localhost:\d+$/],
+  credentials: true
+}));
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/accounting')
@@ -34,7 +39,7 @@ app.use('/supplier', supplierRoutes);
 app.use('/user', userRoutes);
 app.use('/receipt', receiptRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

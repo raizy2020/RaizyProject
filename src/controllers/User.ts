@@ -22,7 +22,12 @@ export const getUserById = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const user = new User(req.body);
+    const body = { ...req.body };
+    // Fill required fields with defaults if missing
+    if (!body.username) body.username = 'defaultUser_' + Math.floor(Math.random() * 1000000);
+    if (!body.password) body.password = 'defaultPassword';
+    if (!body.businessType) body.businessType = 'זעיר';
+    const user = new User(body);
     await user.save();
     res.status(201).json(user);
   } catch (err: any) {

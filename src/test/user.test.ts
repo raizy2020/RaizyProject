@@ -21,7 +21,7 @@ describe('User API', () => {
       .send({ name: 'FindMe' });
     const id = createRes.body._id;
     const res = await request(app).get(`/user/${id}`);
-    expect([200, 404, 400,500]).toContain(res.statusCode);
+    expect([200, 404, 400]).toContain(res.statusCode);
   });
 
   it('should update user', async () => {
@@ -41,6 +41,6 @@ describe('User API', () => {
       .send({ name: 'DeleteMe' });
     const id = createRes.body._id;
     const res = await request(app).delete(`/user/${id}`);
-    expect([200, 404, 400,500]).toContain(res.statusCode);
+    expect([200, 404, 400]).toContain(res.statusCode);
   });
 });
